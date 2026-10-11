@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="dino.js" defer></script>
+</head>
+<body>
+
+    <!-- JOBB FELSŐ SAROK: NYELVKIVÁLASZTÓ ZÁSZLÓKKAL -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('hu')" id="btn-hu">
+            <img src="https://flagcdn.com/w40/hu.png" alt="HU"> HU
+        </button>
+        <button class="lang-btn" onclick="setLanguage('de')" id="btn-de">
+            <img src="https://flagcdn.com/w40/de.png" alt="DE"> DE
+        </button>
+        <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">
+            <img src="https://flagcdn.com/w40/gb.png" alt="EN"> EN
+        </button>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+        <div class="profile-container">
+            <!-- Helyi 9x16-os profilkép (a mappa gyökerében lévő profile.png) -->
+            <img src="profile.png" alt="Profile Picture" class="profile-pic">
+            <h2 class="profile-name">Gábor Kristóf Mátyás</h2>
+            <p class="profile-title" data-i18n="title">Gazdaság informatikus Hallgató & Dev</p>
+        </div>
+
+        <!-- BAL ALSÓ SAROK: ELÉRHETŐSÉGEK -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/kristof.gabor.73" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/gaborkristof22/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:gabokristof@gmail.com" title="Gmail"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section>
+            <h1 data-i18n="welcome">Üdvözöllek a Portfóliómon!</h1>
+            <p data-i18n="welcome_text">19 éves programozó és tech rajongó vagyok. A Bárdos László Gimnázium elvégzése után jelenleg gazdaságinformatikát tanulok a Széchenyi István Egyetemen (SZE).</p>
+        </section>
+
+        <section>
+            <h2 data-i18n="about_heading">Rólam</h2>
+            <p data-i18n="about_p1">Az egyetemi tanulmányaim mellett nagy szenvedéllyel építek praktikus és kreatív technológiai megoldásokat. A tudásom a frontend webfejlesztéstől és egyedi Python/Node.js Discord botoktól kezdve az áramkörök építésén, hardverek szerelésén át a gépészeti berendezések tyúkolásáig terjed.</p>
+            <p data-i18n="about_p2">Amikor nem kódolok vagy automatizált szkripteken dolgozom, gyakran motorozok, horgászom, trombitálok, vagy modolt, illetve plugin-alapú Minecraft szervereket hozok létre és kezelek.</p>
+        </section>
+
+        <section>
+            <h2 data-i18n="skills_heading">Készségek & Tudás</h2>
+            <div class="skills-grid">
+                <div class="skill-badge" data-i18n="skill_1">HTML / CSS / JS</div>
+                <div class="skill-badge" data-i18n="skill_2">Python</div>
+                <div class="skill-badge" data-i18n="skill_3">Node.js</div>
+                <div class="skill-badge" data-i18n="skill_4">Discord Botok</div>
+                <div class="skill-badge" data-i18n="skill_5">Elektronika</div>
+                <div class="skill-badge" data-i18n="skill_6">Hardver Szerelés</div>
+            </div>
+        </section>
+
+       <!-- DINÓ JÁTÉK SZEKCIÓ -->
+        <section class="game-section">
+            <h2 data-i18n="game_heading">Kis pihenő: Dinó Játék 🦖</h2>
+            <p data-i18n="game_desc">Kattints a játékmezőre, majd a <strong>Szóköz (Space)</strong> billentyűvel vagy egérrel tudsz ugrani a kaktuszok felett!</p>
+            <div class="game-container" style="text-align: center; padding: 15px; background: rgba(30, 41, 59, 0.7);">
+                <canvas id="dinoCanvas" width="600" height="160" style="width: 100%; max-width: 600px; height: 160px; background: #0f172a; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.3); cursor: pointer;"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <!-- NYELVI ADATOK ÉS LOGIKA -->
+    <script>
+        const translations = {
+            hu: {
+                title: "Gazdinfós Hallgató & Dev",
+                welcome: "Üdvözöllek a Portfóliómon!",
+                welcome_text: "19 éves programozó és tech rajongó vagyok. A Bárdos László Gimnázium elvégzése után jelenleg gazdaságinformatikát tanulok a Széchenyi István Egyetemen (SZE).",
+                about_heading: "Rólam",
+                about_p1: "Az egyetemi tanulmányaim mellett nagy szenvedéllyel építek praktikus és kreatív technológiai megoldásokat. A tudásom a frontend webfejlesztéstől és egyedi Python/Node.js Discord botoktól kezdve az áramkörök építésén, hardverek szerelésén át a gépészeti berendezések tyúkolásáig terjed.",
+                about_p2: "Amikor nem kódolok vagy automatizált szkripteken dolgozom, gyakran motorozom, horgászom, trombitálok, vagy modolt, illetve plugin-alapú Minecraft szervereket hozok létre és kezelek.",
+                skills_heading: "Készségek & Tudás",
+                skill_1: "HTML / CSS / JS",
+                skill_2: "Python",
+                skill_3: "Node.js",
+                skill_4: "Discord Botok",
+                skill_5: "Elektronika",
+                skill_6: "Hardver Szerelés",
+                game_heading: "Kis pihenő: Dinó Játék 🦖",
+                game_desc: "Kattints a játékra, majd a Szóköz (Space) billentyűvel tudsz ugrani a kaktuszok felett!"
+            },
+            de: {
+                title: "Business IT Student & Dev",
+                welcome: "Willkommen in meinem Portfolio!",
+                welcome_text: "Ich bin 19 Jahre alt und leidenschaftlicher Entwickler. Nach meinem Abschluss am Bárdos-László-Gymnasium studiere ich derzeit Business Information Technology (Wirtschaftsinformatik) an der Széchenyi-István-Universität (SZE).",
+                about_heading: "Über mich",
+                about_p1: "Neben meinem Studium habe ich eine große Leidenschaft für die Entwicklung praktischer und kreativer Technologielösungen. Meine Kenntnisse reichen von Frontend-Webentwicklung und individuellen Python/Node.js Discord-Bots bis hin zu elektronischen Schaltungen, Hardware-Montage und mechanischen Geräten.",
+                about_p2: "Wenn ich nicht code oder an automatisierten Skripten arbeite, fahre ich oft Motorrad, gehe angeln, spiele Trompete oder richte modifizierte und Plugin-basierte Minecraft-Server ein.",
+                skills_heading: "Fähigkeiten & Wissen",
+                skill_1: "HTML / CSS / JS",
+                skill_2: "Python",
+                skill_3: "Node.js",
+                skill_4: "Discord Bots",
+                skill_5: "Elektronik",
+                skill_6: "Hardware-Montage",
+                game_heading: "Kleine Pause: Dino-Spiel 🦖",
+                game_desc: "Klicke auf das Spiel und benutze die Leertaste (Space), um über die Kakteen zu springen!"
+            },
+            en: {
+                title: "Business IT Student & Dev",
+                welcome: "Welcome to My Portfolio!",
+                welcome_text: "I'm a 19-year-old passionate developer and tech enthusiast. After graduating from Bárdos László High School, I am currently studying Business Information Technology at Széchenyi István University (SZE).",
+                about_heading: "About Me",
+                about_p1: "Beyond my university studies, I have a deep passion for building practical and creative tech solutions. My expertise ranges from frontend web development and custom Python/Node.js Discord bots to electrical circuits, hardware assembly, and mechanical tinkering.",
+                about_p2: "When I'm not coding or working on automated scripts, you can often find me riding motorcycles, fishing, playing the trumpet, or setting up modded and plugin-based Minecraft servers.",
+                skills_heading: "Skills & Expertise",
+                skill_1: "HTML / CSS / JS",
+                skill_2: "Python",
+                skill_3: "Node.js",
+                skill_4: "Discord Bots",
+                skill_5: "Electronics",
+                skill_6: "Hardware Assembly",
+                game_heading: "Quick Break: Dino Game 🦖",
+                game_desc: "Click on the game and press the Spacebar to jump over the cacti!"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
